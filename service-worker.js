@@ -5,7 +5,7 @@ const cacheAssets = [
   '/fonts/custom-font.woff2',
 ];
 
-// Установка Service Worker
+
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(cacheName).then((cache) => {
@@ -14,7 +14,7 @@ self.addEventListener('install', (e) => {
   );
 });
 
-// Активация Service Worker
+
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -29,7 +29,7 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// Перехват запросов
+
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     fetch(e.request).catch(() => caches.match(e.request))
